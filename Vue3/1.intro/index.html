@@ -1,0 +1,22 @@
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<div id="app">{{message}}</div>
+
+<script>
+  // vue 2
+  new Vue({
+    el: "#app",
+  })
+
+  new Vue({
+    // el: "#app"
+  }).mount("#app")
+
+  // vue 3
+  Vue.createApp({
+    data() {
+      return {
+        message: "hi",
+      }
+    },
+  }).mount("#app")
+</script>

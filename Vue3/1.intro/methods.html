@@ -1,0 +1,24 @@
+<div id="app">
+  <p>{{ count }}</p>
+  <button v-on:click="addCount">+</button
+  ><button v-on:click="subCount">-</button>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  Vue.createApp({
+    data: function () {
+      return {
+        count: 0,
+      }
+    },
+    methods: {
+      addCount() {
+        this.count++
+      },
+      subCount() {
+        this.count--
+      },
+    },
+  }).mount("#app")
+</script>
