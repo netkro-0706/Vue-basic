@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <transition-group name="list" tag="ul">
       <li v-for="(todoItem, i) in propsdata" v-bind:key="i" class="shadow">
         <i
           class="checkBtn fa-solid fa-check"
@@ -14,7 +14,7 @@
           <i class="fa-solid fa-trash" />
         </span>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -64,5 +64,15 @@ li {
 .removeBtn {
   margin-left: auto;
   color: #de4343;
+}
+
+/** 리스트 아이템 트랜지션 효과 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 </style>
