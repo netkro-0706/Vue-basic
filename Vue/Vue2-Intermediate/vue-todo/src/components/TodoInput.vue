@@ -7,7 +7,7 @@
       v-model="newTodoItem"
     />
     <!-- <button class="addBtn" v-on:click="addTodo">add</button> -->
-    <span class="addContainer" v-on:click="addTodo">
+    <span class="addContainer addBtn" v-on:click="addTodo">
       <i class="fa-solid fa-plus"></i>
     </span>
   </div>
@@ -23,8 +23,7 @@ export default {
   methods: {
     addTodo() {
       if (this.newTodoItem !== "") {
-        let obj = { completed: false, item: this.newTodoItem };
-        localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput();
       }
     },
