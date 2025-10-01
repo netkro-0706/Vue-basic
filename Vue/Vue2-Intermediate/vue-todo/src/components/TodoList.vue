@@ -25,10 +25,8 @@ export default {
     removeTodo(todoItem, index) {
       this.$emit("removeItem", todoItem, index);
     },
-    toggleComplete(item, idx) {
-      item.completed = !item.completed;
-      localStorage.removeItem(item.item);
-      localStorage.setItem(item.item, JSON.stringify(item));
+    toggleComplete(todoItem, index) {
+      this.$emit("toggleItem", todoItem, index);
     },
   },
 };
