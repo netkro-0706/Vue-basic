@@ -1,7 +1,11 @@
 <template>
   <div>
     <transition-group name="list" tag="ul">
-      <li v-for="(todoItem, i) in propsdata" v-bind:key="i" class="shadow">
+      <li
+        v-for="(todoItem, i) in this.$store.state.todoItems"
+        v-bind:key="i"
+        class="shadow"
+      >
         <i
           class="checkBtn fa-solid fa-check"
           v-bind:class="{ checkBtnCompleted: todoItem.completed }"
@@ -20,7 +24,6 @@
 
 <script>
 export default {
-  props: ["propsdata"],
   methods: {
     removeTodo(todoItem, index) {
       this.$emit("removeItem", todoItem, index);
