@@ -15,9 +15,7 @@ import TodoList from "./components/TodoList.vue";
 
 export default {
   data() {
-    return {
-      // todoItems: [],
-    };
+    return {};
   },
   methods: {},
   components: {
