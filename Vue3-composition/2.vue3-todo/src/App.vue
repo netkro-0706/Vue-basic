@@ -5,10 +5,11 @@
 </template>
 
 <script>
-import { onBeforeMount, onMounted, onUnmounted, ref } from "vue"
+import { onBeforeMount, onMounted, onUnmounted } from "vue"
 import TodoHeader from "./components/TodoHeader.vue"
 import TodoInput from "./components/TodoInput.vue"
 import TodoList from "./components/TodoList.vue"
+import { useTodo } from "./hooks/useTodo"
 
 export default {
   components: {
@@ -22,26 +23,12 @@ export default {
     }
   },
   setup() {
-    const todoItems = ref([])
+    const { todoItems, addTodoItem, fetchTodos } = useTodo()
 
-    const fetchTodos = () => {
-      const result = []
-      for (let i = 0; i < localStorage.length; i++) {
-        const todoItem = localStorage.key(i)
-        result.push(todoItem)
-      }
-      return result
-    }
-
-    const addTodoItem = (todo) => {
-      todoItems.value.push(todo)
-      localStorage.setItem(todo, todo)
-    }
-
-    const removeTodoItem = (item, index) => {
-      todoItems.value.splice(index, 1)
-      localStorage.removeItem(item)
-    }
+    // const removeTodoItem = (item, index) => {
+    //   todoItems.value.splice(index, 1)
+    //   localStorage.removeItem(item)
+    // }
 
     // console.log("1 : setup called")
 
@@ -60,14 +47,14 @@ export default {
       //   console.log("4 : onUnmounted called")
     })
 
-    return { todoItems, addTodoItem, removeTodoItem }
+    return { todoItems, addTodoItem }
   },
-  // methods: {
-  //   removeTodoItem(item, index) {
-  //     this.todoItems.splice(index, 1)
-  //     localStorage.removeItem(item)
-  //   },
-  // },
+  methods: {
+    removeTodoItem(item, index) {
+      this.todoItems.splice(index, 1)
+      localStorage.removeItem(item)
+    },
+  },
 }
 </script>
 
