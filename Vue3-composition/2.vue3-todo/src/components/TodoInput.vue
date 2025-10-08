@@ -1,6 +1,11 @@
 <template>
   <div>
-    <input type="text" ref="inputRef" v-model="todoInput" />
+    <input
+      type="text"
+      ref="inputRef"
+      @keydown.enter="addTodo"
+      v-model="todoInput"
+    />
     <button @click="addTodo">추가</button>
   </div>
 </template>
@@ -13,7 +18,7 @@ export default {
     const todoInput = ref("")
     const inputRef = ref(null)
 
-    const addTodo = async () => {
+    const addTodo = () => {
       const todo = todoInput.value
       localStorage.setItem(todo, todo)
       todoInput.value = ""
