@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { ref } from "vue"
+import { onBeforeMount, onMounted, onUnmounted, ref } from "vue"
 import TodoHeader from "./components/TodoHeader.vue"
 import TodoInput from "./components/TodoInput.vue"
 import TodoList from "./components/TodoList.vue"
@@ -43,7 +43,22 @@ export default {
       localStorage.removeItem(item)
     }
 
-    todoItems.value = fetchTodos()
+    console.log("1 : setup called")
+
+    // 라이프 사이클 api
+    onBeforeMount(() => {
+      console.log("2 : onBeforeMount called")
+      todoItems.value = fetchTodos()
+    })
+
+    onMounted(() => {
+      console.log("3 : onMounted called")
+    })
+
+    // 컴포넌트가 제거될 때 동작
+    onUnmounted(() => {
+      console.log("4 : onUnmounted called")
+    })
 
     return { todoItems, addTodoItem, removeTodoItem }
   },
