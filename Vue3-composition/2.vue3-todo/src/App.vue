@@ -43,21 +43,21 @@ export default {
       localStorage.removeItem(item)
     }
 
-    console.log("1 : setup called")
+    // console.log("1 : setup called")
 
     // 라이프 사이클 api
     onBeforeMount(() => {
-      console.log("2 : onBeforeMount called")
+      // console.log("2 : onBeforeMount called")
       todoItems.value = fetchTodos()
     })
 
     onMounted(() => {
-      console.log("3 : onMounted called")
+      //   console.log("3 : onMounted called")
     })
 
-    // 컴포넌트가 제거될 때 동작
+    // // 컴포넌트가 제거될 때 동작
     onUnmounted(() => {
-      console.log("4 : onUnmounted called")
+      //   console.log("4 : onUnmounted called")
     })
 
     return { todoItems, addTodoItem, removeTodoItem }
