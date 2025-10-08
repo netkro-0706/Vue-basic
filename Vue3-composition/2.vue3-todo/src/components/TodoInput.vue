@@ -3,7 +3,7 @@
     <input
       type="text"
       ref="inputRef"
-      @keydown.enter="addTodo"
+      @keyup.enter="addTodo"
       v-model="todoInput"
     />
     <button @click="addTodo">추가</button>
@@ -14,13 +14,15 @@
 import { ref } from "vue"
 
 export default {
-  setup() {
+  setup(props, context) {
     const todoInput = ref("")
     const inputRef = ref(null)
 
     const addTodo = () => {
       const todo = todoInput.value
-      localStorage.setItem(todo, todo)
+      if (todo.length === 0) return
+      context.emit("add", todo)
+
       todoInput.value = ""
       inputRef.value.focus()
     }
