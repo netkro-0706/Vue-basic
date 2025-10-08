@@ -9,11 +9,14 @@
 
 <script>
 export default {
-  props: ["todoItems"],
-  setup(props, context) {
+  props: ["todoItems", "userId"],
+  // context는 emit, ...으로 destruct해도 상관 없지만 props는 destruct하면 안된다.
+  setup(props, { emit }) {
     const removeTodo = (item, index) => {
-      context.emit("remove", item, index)
+      emit("remove", item, index)
     }
+
+    props.userId
 
     return { removeTodo }
   },
