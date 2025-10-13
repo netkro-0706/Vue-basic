@@ -12,22 +12,8 @@ module.exports = {
     parser: "@babel/eslint-parser",
   },
   rules: {
-    "no-console": "off",
-    // "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    // "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "prettier/prettier": [
-      "error",
-      {
-        singleQuote: false,
-        semi: true,
-        // useTabs: true,
-        // tabWidth: 2,
-        // trailingComma: "all",
-        // bracketSpacing: false,
-        // arrowParens: "avoid",
-        printWidth: 80,
-      },
-    ],
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
   },
   overrides: [
     {
