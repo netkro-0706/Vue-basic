@@ -15,7 +15,7 @@
           <label for="password">pw:</label>
           <input id="password" type="text" v-model="password" />
         </div>
-        <button class="btn" :disabled="!isUsernameValid || !hasPassword" type="submit">Login</button>
+        <button class="btn" :disabled="!isUsernameValid || !isPasswordValid" type="submit">Login</button>
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
@@ -54,11 +54,12 @@ export default {
           password: this.password
         }
         const { data } = await loginUser(userData);
-        // console.log(data.user);
         this.logMessage =  `${data.user.username} 님 환영합니다.`;
-        this.initForm();
+        this.$store.commit("setUsername", data.user.username)
+        setTimeout(()=>{
+          this.$router.push("/main")
+        },1000)
       } catch(error){
-        // console.log(error.response.data)
         this.logMessage = `${error.response.data} ${this.guidUser}`;
         this.initForm();
       }
