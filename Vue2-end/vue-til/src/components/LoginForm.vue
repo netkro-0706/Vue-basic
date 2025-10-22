@@ -54,6 +54,8 @@ export default {
           password: this.password
         }
         const { data } = await loginUser(userData);
+        console.log(data.token);
+        this.$store.commit("setToken", data.token);
         this.logMessage =  `${data.user.username} 님 환영합니다.`;
         this.$store.commit("setUsername", data.user.username)
         setTimeout(()=>{
