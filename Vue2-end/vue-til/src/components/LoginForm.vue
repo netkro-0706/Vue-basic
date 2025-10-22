@@ -1,16 +1,25 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <div>
-      <label for="username">id:</label>
-      <input id="username" type="text" v-model="username"/>
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <form @submit.prevent="submitForm" class="form">
+        <div>
+          <label for="username">id:</label>
+          <input id="username" type="text" v-model="username" />
+          <p class="validation-text">
+            <span class="warning" v-if="!isUsernameValid && username">
+              Please enter an email address
+            </span>
+          </p>
+        </div>
+        <div>
+          <label for="password">pw:</label>
+          <input id="password" type="text" v-model="password" />
+        </div>
+        <button class="btn" :disabled="!isUsernameValid || !hasPassword" type="submit">Login</button>
+      </form>
+      <p class="log">{{ logMessage }}</p>
     </div>
-    <div>
-      <label for="password">password:</label>
-      <input id="password" type="text" v-model="password"/>
-    </div>
-    <button :disabled="!isUsernameValid || !hasPassword" type="submit">Login</button>
-    <p class="log-message">{{ logMessage }}</p>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -67,4 +76,7 @@ export default {
   white-space: pre-wrap;
 }
 
+.btn {
+  color: white;
+}
 </style>

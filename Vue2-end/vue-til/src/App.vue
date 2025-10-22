@@ -14,4 +14,7 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+@import './css/reset.css';
+@import './css/common.css';
+</style>

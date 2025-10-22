@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>Signup Page</h1>
+    <h1 class="page-header">Signup Page</h1>
     <SignupForm></SignupForm>
   </div>
 </template>
 
 <script>
-import SignupForm from "@/components/SignupForm.vue";
+import SignupForm from '@/components/SignupForm.vue';
 
 export default {
   components: {
@@ -15,4 +15,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style></style>
