@@ -11,12 +11,15 @@
         />
       </ul>
     </div>
+    <router-link to="/add" class="create-button">
+      <i class="ion-md-add"></i>
+    </router-link>
   </div>
 </template>
 
 <script>
 import { fetchPosts } from "@/api/index"
-import LoadingSpinner from "@/components/posts/LoadingSpinner.vue";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 import PostListItem from "@/components/posts/PostListItem.vue"
 
 export default {
