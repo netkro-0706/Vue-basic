@@ -17,15 +17,13 @@
         </div>
         <button class="btn" :disabled="!isUsernameValid || !isPasswordValid" type="submit">Login</button>
       </form>
-      <p class="log">{{ logMessage }}</p>
+      <!-- <p class="log">{{ logMessage }}</p> -->
     </div>
   </div>
 </template>
 
 <script>
-import {loginUser} from "@/api/index"
 import { validateEmail, validatePassword } from "@/utils/validation"
-
 
 export default {
   data(){
@@ -49,15 +47,11 @@ export default {
   methods:{
     async submitForm(){
       try{
-        const userData={
+        const userData = {
           username: this.username,
           password: this.password
         }
-        const { data } = await loginUser(userData);
-        console.log(data.token);
-        this.$store.commit("setToken", data.token);
-        this.logMessage =  `${data.user.username} 님 환영합니다.`;
-        this.$store.commit("setUsername", data.user.username)
+        await this.$store.dispatch("LOGIN", userData)
         setTimeout(()=>{
           this.$router.push("/main")
         },1000)
