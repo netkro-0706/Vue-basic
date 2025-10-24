@@ -49,14 +49,12 @@ export default {
   },
   methods:{
     async submitForm(){
-      console.log("submit form");
       const userData = {
         username: this.username,
         password: this.password,
         nickname: this.nickname,
       }
       const {data} = await registerUser(userData);
-      console.log(data.username)
       this.logMessage = `${data.username} is join`
       this.initForm();
     },
